@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MENTE Agency</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        @property --angle {
+            syntax: '<angle>';
+            initial-value: 90deg;
+            inherits: true;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Parkinsans', sans-serif;
+            position: relative;
+            background: linear-gradient(135deg, #0f0f0f 50%, #d4a017 20%, #0f0f0f 90%); /* Lekki pomarańczowy gradient przez środek */ /* Lekki pomarańczowy gradient */ /* Kolor tła pasujący do tła obrazu */
+            color: white;
+        }
+
+        .sidebar {
+    position: fixed;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    padding: 20px;
+    background: #0f0f0f;
+    border-radius: 20px 0 0 20px;
+    text-align: left;
+}
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar ul li {
+    margin-bottom: 10px;
+    width: auto;
+    height: 20px;
+    padding: 0;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+    background: none; /* Brak tła dla niewybranych sekcji */
+    color: transparent; /* Ukrycie tekstu w nieaktywnych sekcjach */
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    white-space: nowrap;
+}
+
+.sidebar ul li::after {
+    content: "";
+    position: absolute;
+    right: -15px;
+    width: 15px;
+    height: 80%;
+    background: #444;
+    border-radius: 5px;
+    display: block;
+}
+
+
+.sidebar ul li.active {
+    background: #0f0f0f; /* Kolor tła zgodny z tłem strony dla aktywnego slajdu */
+    box-shadow: 0 0 10px #0f0f0f;
+    color: #d4a017; /* Widoczny tekst tylko w aktywnej sekcji */
+    text-shadow: 0 0 10px #d4a017;
+    padding-right: 40px;
+}
+
+.sidebar ul li.active::after {
+    background: #d4a017; /* Kolor pomarańczowy dla aktywnego bloku */
+
+}
+
+        .sidebar ul li.active {
+            background: #0f0f0f;
+            
+            color: #d4a017;
+            text-shadow: 0 0 10px #d4a017;
+        }
+
+        .sidebar ul li::after {
+    content: "";
+    position: absolute;
+    right: -15px;
+    width: 10px;
+    height: 100%;
+    background: #d4a017;
+    border-radius: 5px;
+    box-shadow: 0 0 10px #d4a017;
+    display: none; /* Ukrycie bloku w nieaktywnych sekcjach */
+}
+
+.sidebar ul li.active::after {
+    display: block; /* Pokaż blok tylko w aktywnej sekcji */
+}
+
+.sidebar ul li.active::after {
+    display: block; /* Pokaż blok tylko w aktywnej sekcji */
+}
+
+        .section {
+            padding: 150px;
+            min-height: 100vh;
+        }
+
+        .section h1 {
+            font-size: 3em;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .box-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .box {
+            width: 200px;
+            height: 500px;
+            background: black;
+            border: 5px solid #d4a017; /* Transparentny pomarańczowy kolor */
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .box:hover {
+    transform: scale(1.05); /* Lekkie powiększenie boxa po najechaniu */
+    box-shadow: 0 0 20px #d4a017;
+}
+
+        .box::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    border: 5px solid transparent;
+    pointer-events: none;
+}
+
+        .box:hover::after {
+            border-image: conic-gradient(from var(--angle), rgba(255, 165, 0, 0.1), rgba(255, 165, 0, 1) 0.1turn, rgba(255, 165, 0, 1) 0.15turn, rgba(255, 165, 0, 0.1) 0.25turn) 30;
+            animation: borderRotate 2500ms linear infinite forwards;
+        }
+
+        @keyframes borderRotate {
+            100% {
+                --angle: 420deg;
+            }
+        }
+
+        .header-logo {
+            text-align: center;
+            margin: 50px 0;
+        }
+
+        .header-logo img {
+            width: 600px;
+            height: auto;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Parkinsans&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="header-logo">
+        <img style="padding-top: 150px; padding-bottom: 50px;" src="menteevent.png" alt="MENTE Agency Logo">
+    </div>
+
+    <div class="sidebar">
+        <ul>
+            <li class="active" onclick="scrollToSection(0)">Mente</li>
+            <li onclick="scrollToSection(1)">Dlaczego Mente?</li>
+            <li onclick="scrollToSection(2)">Specjalizacja</li>
+            <li onclick="scrollToSection(3)">Informacje</li>
+            <li onclick="scrollToSection(4)">Kontakt</li>
+        </ul>
+    </div>
+
+    <div class="section" id="Mente">
+        <h1>Mente</h1>
+        <div class="box-container">
+            <p style="text-align: center; padding-left: 100px; padding-right: 100px;font-size: 30px;">Witaj w Mente – miejscu, gdzie pomysłowość spotyka się z profesjonalizmem, a
+każdy event staje się wyjątkowym doświadczeniem. „Mente” oznacza „umysł” i
+idealnie odzwierciedla nasze podejście do planowania i realizacji wydarzeń:
+pracujemy kreatywnie i z pełnym zaangażowaniem, a że nie ma umysłu bez serca, to
+gwarantujemy, że każda chwila na Twoim evencie będzie wyjątkowa i pełna
+pozytywnych wrażeń.</p>
+        </div>
+    </div>
+
+    <div class="section" id="Dlaczego Mente?">
+        <h1><b>Dlaczego Mente?</b></h1>
+        <div class="box-container">
+            <p style="text-align: center; padding-left: 100px; padding-right: 100px;font-size: 30px;">W Mente wierzymy, że każdy event to opowieść a naszą misją jest nadanie jej
+wyjątkowej formy. Jesteśmy zespołem pasjonatów, którzy przekształcają wizje w
+rzeczywistość, dbając o każdy detal i łącząc innowacyjne rozwiązania z
+nieszablonowym podejściem. Nasza kreatywność, umiejętności i bogate
+doświadczenie na rynkach polskim oraz międzynarodowym pozwalają nam
+realizować wydarzenia, które zostają w pamięci na długo.</p>
+        </div>
+    </div>
+
+    <div class="section" id="Nasza Specjalizacja:">
+        <h1>Nasza Specjalizacja:</h1>
+        <div class="box-container" style="flex-wrap: wrap; justify-content: space-around;">
+            <div class="box" style="width: 20%; margin-bottom: 10px;">
+                <!-- <img src="example1.jpg" alt="Example Image 1" style="width: 100%; height: auto; border-radius: 15px;"> -->
+                <p style="text-align: center; color: #d4a017; margin-top: 10px; display: flex; justify-content: center; align-items: center; color: white; font-size: 30px; padding-top: 30px;"><b>Eventy Hybrydowe i Wirtualne</b></p>
+                <p style="text-align: center; color: white; padding: 30px; padding-top: 0px; ">Z łatwością łączymy fizyczne i cyfrowe formaty, tworząc wydarzenia, które
+                    angażują i inspirują na wiele sposobów, niezależnie od miejsca i czasu.</p>
+            </div>
+            <div class="box" style="width: 20%; margin-bottom: 10px;">
+                <!-- <img src="example2.jpg" alt="Example Image 2" style="width: 100%; height: auto; border-radius: 15px;"> -->
+                <p style="text-align: center; color: #d4a017; margin-top: 10px; color: white; font-size: 30px; padding-top: 30px; "><b>Konferencje i Szkolenia</b></p>
+                <p style="text-align: center; color: white; padding: 30px; padding-top: 0px; ">Zajmujemy się organizacją konferencji i szkoleń, które łączą profesjonalizm i
+                    nowoczesne rozwiązania multimedialne, podnosząc standardy edukacyjne. </p>
+            </div>
+            <div class="box" style="width: 20%;">
+                <!--<img src="example3.jpg" alt="Example Image 3" style="width: 100%; height: auto; border-radius: 15px;"> -->
+                <p style="text-align: center; color: #d4a017; margin-top: 10px; color: white; font-size: 30px; padding-top: 30px;"><b>Targi i Wystawy Firmowe</b></p>
+                <p style="text-align: center; color: white; padding: 30px; padding-top: 0px; ">Projektujemy przestrzenie wystawiennicze, które w pełni oddają charakter
+                    Twojej marki i tworzą niezapomniane doświadczenia dla odbiorców. </p>
+            </div>
+            <div class="box" style="width: 20%;">
+                <!--<img src="example4.jpg" alt="Example Image 4" style="width: 100%; height: auto; border-radius: 15px;"> -->
+                <p style="text-align: center; color: #d4a017; margin-top: 10px; color: white; font-size: 30px; "><b>Wydarzenia Luksusowe i VIP</b></p>
+                <p style="text-align: center; color: white; padding: 30px; padding-top: 0px; padding-top: 30px;">Specjalizujemy się w organizacji luksusowych wydarzeń, które wymagają
+                    najwyższego poziomu dbałości o szczegóły i kreatywności. </p>
+            </div>
+        </div>
+    </div>
+            
+        </div>
+    </div>
+
+    <div class="section" id="Informacje">
+        <h1>Mente – Umysł za Każdym Wydarzeniem</h1>
+        <div class="box-container">
+        <p style="text-align: center; padding-left: 100px; padding-right: 100px;font-size: 30px;">Nie tworzymy tylko eventów – tworzymy historie, które zostają w pamięci. Naszym
+celem jest nie tylko spełnianie oczekiwań, ale ich przekraczanie poprzez
+nieszablonowe podejście i troskę o każdy aspekt organizacji. Dołącz do klientów,
+którzy zaufali nam w realizacji niezapomnianych wydarzeń i przekonaj się, jak nasze
+kreatywne podejście może wzbogacić każde spotkanie.
+Mente – inteligentne podejście do eventów.</p>
+        </div>
+    </div>
+
+    <div class="section" id="Kontakt">
+        <h1>Skontaktuj się z nami:</h1>
+        <div class="box-container">
+            <button style="background-color: #d4a017; color: #0f0f0f; padding: 15px 25px; margin: 10px; border: none; border-radius: 5px; cursor: pointer; font-size: 20px; display: flex; align-items: center; gap: 10px; transition: all 0.3s ease;" onclick="window.location.href='mailto:kontakt@mente.pl'" onmouseover="this.style.transform='scale(1.05)'; this.style.backgroundColor='#e6b800';" onmouseout="this.style.transform='scale(1)'; this.style.backgroundColor='#d4a017';"><img src='https://img.icons8.com/ios-filled/24/000000/email.png' alt='Email Icon'/> Kontakt: kontakt@mente.pl</button>
+            <button style="background-color: #d4a017; color: #0f0f0f; padding: 15px 25px; margin: 10px; border: none; border-radius: 5px; cursor: pointer; font-size: 20px; display: flex; align-items: center; gap: 10px; transition: all 0.3s ease;" onclick="copyToClipboard('604750875')" onmouseover="this.style.transform='scale(1.05)'; this.style.backgroundColor='#e6b800';" onmouseout="this.style.transform='scale(1)'; this.style.backgroundColor='#d4a017';"><img src='https://img.icons8.com/ios-filled/24/000000/phone.png' alt='Phone Icon'/> Tel: 604750875</button>
+        </div>
+    </div>
+    </div>
+
+    <script>
+        const sections = document.querySelectorAll('.section');
+        const sidebarItems = document.querySelectorAll('.sidebar ul li');
+
+        window.addEventListener('scroll', () => {
+            let current = "";
+
+            sections.forEach((section, index) => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 60) {
+                    current = index;
+                }
+            });
+
+            sidebarItems.forEach((li, index) => {
+                li.classList.remove('active');
+                if (index == current) {
+                    li.classList.add('active');
+                }
+            });
+        });
+
+        function scrollToSection(index) {
+            const section = document.getElementById(`section-${index}`);
+            section.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+<script>
+    function copyToClipboard(text) {
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+        alert('Numer telefonu skopiowany do schowka');
+    }
+</script>
+</body>
+</html>
