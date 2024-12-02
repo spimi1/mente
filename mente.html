@@ -16,8 +16,7 @@
             margin: 0;
             font-family: 'Parkinsans', sans-serif;
             position: relative;
-            background: linear-gradient(135deg, #0f0f0f 50%, #d4a017 20%, #0f0f0f 90%); /* Lekki pomarańczowy gradient przez środek */ /* Lekki pomarańczowy gradient */ /* Kolor tła pasujący do tła obrazu */
-            color: white;
+            background: linear-gradient(135deg, #0f0f0f 50%, #d4a017 20%, #0f0f0f 90%); 
         }
 
         .sidebar {
@@ -45,8 +44,8 @@
     cursor: pointer;
     position: relative;
     transition: all 0.3s ease;
-    background: none; /* Brak tła dla niewybranych sekcji */
-    color: transparent; /* Ukrycie tekstu w nieaktywnych sekcjach */
+    background: none; 
+    color: transparent; 
     border: none;
     display: flex;
     align-items: center;
@@ -67,15 +66,15 @@
 
 
 .sidebar ul li.active {
-    background: #0f0f0f; /* Kolor tła zgodny z tłem strony dla aktywnego slajdu */
+    background: #0f0f0f; 
     box-shadow: 0 0 10px #0f0f0f;
-    color: #d4a017; /* Widoczny tekst tylko w aktywnej sekcji */
+    color: #d4a017;
     text-shadow: 0 0 10px #d4a017;
     padding-right: 40px;
 }
 
 .sidebar ul li.active::after {
-    background: #d4a017; /* Kolor pomarańczowy dla aktywnego bloku */
+    background: #d4a017; 
 
 }
 
@@ -95,15 +94,15 @@
     background: #d4a017;
     border-radius: 5px;
     box-shadow: 0 0 10px #d4a017;
-    display: none; /* Ukrycie bloku w nieaktywnych sekcjach */
+    display: none; 
 }
 
 .sidebar ul li.active::after {
-    display: block; /* Pokaż blok tylko w aktywnej sekcji */
+    display: block;
 }
 
 .sidebar ul li.active::after {
-    display: block; /* Pokaż blok tylko w aktywnej sekcji */
+    display: block; 
 }
 
         .section {
@@ -127,7 +126,7 @@
             width: 200px;
             height: 500px;
             background: black;
-            border: 5px solid #d4a017; /* Transparentny pomarańczowy kolor */
+            border: 5px solid #d4a017;
             border-radius: 20px;
             position: relative;
             overflow: hidden;
@@ -135,7 +134,7 @@
         }
 
         .box:hover {
-    transform: scale(1.05); /* Lekkie powiększenie boxa po najechaniu */
+    transform: scale(1.05); 
     box-shadow: 0 0 20px #d4a017;
 }
 
